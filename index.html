@@ -1,0 +1,28 @@
+<script>
+    "use strict";
+    function worker(arr) {
+        let sum = 0;
+        for(let i = 0; i < arr.length; i++) {
+            sum = sum + arr[i];
+        }
+
+        return sum;
+    }
+
+    function makework(arrOfArr) {
+        let max = -Infinity;
+        for(let i = 0; i < arrOfArr.length; i++) {
+            const arrSum = worker(arrOfArr[i]);
+            if(max < arrSum) {
+                max = arrSum;
+            }
+        }
+
+        return max;
+    }
+
+    console.log(worker([1,2,3]) === 6)
+    console.log(worker([1,2,3,4,5,6]) === 21)
+    console.log(worker([1,2,-3, 4,6]) === 10)
+    console.log(makework([[1,2,3], [2,3,4], [-5, -3, 12]]))
+</script>
